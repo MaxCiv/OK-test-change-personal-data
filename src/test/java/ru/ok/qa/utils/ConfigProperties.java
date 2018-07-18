@@ -1,4 +1,4 @@
-package ru.ok.utils;
+package ru.ok.qa.utils;
 
 import org.apache.log4j.Logger;
 
@@ -16,13 +16,14 @@ public final class ConfigProperties {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_CHROMEDRIVER = "chromedriver";
     public static final String KEY_GECKODRIVER = "geckodriver";
+    public static final String KEY_IMPLICITLY_WAIT_TIME_SEC = "implicitlyWaitTimeSec";
 
-    private static Properties PROPERTIES;
+    private static Properties properties;
 
     static {
         try (FileInputStream fileInputStream = new FileInputStream(CONFIG_PATH)) {
-            PROPERTIES = new Properties();
-            PROPERTIES.load(fileInputStream);
+            properties = new Properties();
+            properties.load(fileInputStream);
         } catch (FileNotFoundException e) {
             LOG.error("You need to create 'src/test/resources/config.properties' file!\n" + e.getMessage(), e);
         } catch (IOException e) {
@@ -34,6 +35,6 @@ public final class ConfigProperties {
     }
 
     public static String getProperty(String key) {
-        return PROPERTIES.getProperty(key);
+        return properties.getProperty(key);
     }
 }

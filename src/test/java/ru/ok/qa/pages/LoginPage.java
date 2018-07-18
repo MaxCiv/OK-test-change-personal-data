@@ -3,11 +3,8 @@ package ru.ok.qa.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-
-    private WebDriver driver;
+public class LoginPage extends AbstractPage {
 
     @FindBy(id = "field_email")
     private WebElement loginField;
@@ -19,15 +16,16 @@ public class LoginPage {
     private WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
-    public void inputLogin(String login) {
+    public void setLogin(String login) {
+        loginField.clear();
         loginField.sendKeys(login);
     }
 
-    public void inputPassword(String password) {
+    public void setPassword(String password) {
+        passwordField.clear();
         passwordField.sendKeys(password);
     }
 
