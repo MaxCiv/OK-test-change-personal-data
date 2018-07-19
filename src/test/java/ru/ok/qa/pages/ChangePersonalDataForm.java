@@ -6,12 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.ok.qa.model.Gender;
+import ru.ok.qa.models.Gender;
 import ru.ok.qa.utils.ConfigProperties;
 
 import java.util.Calendar;
 
-public class ChangePersonalDataModalPage extends AbstractPage {
+public class ChangePersonalDataForm extends AbstractPage {
 
     private final int timeOutInSeconds = Integer.parseInt(ConfigProperties.getProperty(ConfigProperties.KEY_IMPLICITLY_WAIT_TIME_SEC));
 
@@ -57,12 +57,13 @@ public class ChangePersonalDataModalPage extends AbstractPage {
     @FindBy(id = "cityBSugg_SuggestItems")
     private WebElement birthCitySuggests;
 
+    //TODO более оптимальный способ?
     private String cityResidenceSuggests = "//*[@id='citySugg_SuggestItems']";
     private String cityBirthSuggests = "//*[@id='cityBSugg_SuggestItems']";
     private String cityResidenceSuggest = cityResidenceSuggests + "/li[.//*[text()='%s']]";
     private String cityBirthSuggest = cityBirthSuggests + "/li[.//*[text()='%s']]";
 
-    public ChangePersonalDataModalPage(WebDriver driver) {
+    public ChangePersonalDataForm(WebDriver driver) {
         super(driver);
     }
 

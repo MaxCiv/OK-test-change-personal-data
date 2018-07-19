@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends AbstractPage {
+public class LoginForm extends AbstractPage {
 
     @FindBy(id = "field_email")
     private WebElement loginField;
@@ -15,7 +15,7 @@ public class LoginPage extends AbstractPage {
     @FindBy(css = "input[data-l='t,sign_in']")
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
+    public LoginForm(WebDriver driver) {
         super(driver);
     }
 

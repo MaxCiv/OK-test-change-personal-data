@@ -1,4 +1,4 @@
-package ru.ok.qa.model;
+package ru.ok.qa.models;
 
 public enum Gender {
 
