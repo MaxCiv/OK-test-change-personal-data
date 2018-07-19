@@ -29,9 +29,10 @@ public class User {
             descriptionBuilder.append(", родился ");
         descriptionBuilder.append(birthDate.get(Calendar.DAY_OF_MONTH)).append(" ")
                 .append(birthDate.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("ru"))).append(" ")
-                .append(birthDate.get(Calendar.YEAR))
-                .append(" в городе ").append(birthCity.getShortName())
-                .append(", сейчас живу в городе ").append(residenceCity.getShortName());
+                .append(birthDate.get(Calendar.YEAR));
+        if (!birthCity.getShortName().isEmpty())
+            descriptionBuilder.append(" в городе ").append(birthCity.getShortName());
+        descriptionBuilder.append(", сейчас живу в городе ").append(residenceCity.getShortName());
         return descriptionBuilder.toString();
     }
 

@@ -5,15 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.ok.qa.models.Gender;
-import ru.ok.qa.utils.ConfigProperties;
 
 import java.util.Calendar;
 
 public class ChangePersonalDataForm extends AbstractPage {
-
-    private final int timeOutInSeconds = Integer.parseInt(ConfigProperties.getProperty(ConfigProperties.KEY_IMPLICITLY_WAIT_TIME_SEC));
 
     @FindBy(id = "hook_Form_PopLayerEditUserProfileNewForm")
     private WebElement form;
@@ -57,6 +53,21 @@ public class ChangePersonalDataForm extends AbstractPage {
     @FindBy(id = "cityBSugg_SuggestItems")
     private WebElement birthCitySuggests;
 
+    @FindBy(css = ".form_i.form_i__error[data-l='t,name']>span.input-e")
+    private WebElement nameErrorLabel;
+
+    @FindBy(css = ".form_i.form_i__error[data-l='t,surname']>span.input-e")
+    private WebElement surnameErrorLabel;
+
+    @FindBy(css = ".form_i.form_i__error[data-l='t,birthday']>span.input-e")
+    private WebElement birthDateErrorLabel;
+
+    @FindBy(xpath = "//span[text()='Пожалуйста, выберите место проживания из списка']") // oh my god, where is dot?
+    private WebElement residenceCityErrorLabel;
+
+    @FindBy(xpath = "//span[text()='Пожалуйста, выберите родной город из списка.']")
+    private WebElement birthCityErrorLabel;
+
     //TODO более оптимальный способ?
     private String cityResidenceSuggests = "//*[@id='citySugg_SuggestItems']";
     private String cityBirthSuggests = "//*[@id='cityBSugg_SuggestItems']";
@@ -68,8 +79,7 @@ public class ChangePersonalDataForm extends AbstractPage {
     }
 
     public boolean isFormPresent() {
-        new WebDriverWait(driver, timeOutInSeconds).until(webDriver -> form.isDisplayed());
-        return form.isDisplayed();
+        return isElementPresent(form);
     }
 
     public void setName(String name) {
@@ -88,6 +98,24 @@ public class ChangePersonalDataForm extends AbstractPage {
         new Select(birthYearField).selectByValue(String.valueOf(birthDate.get(Calendar.YEAR)));
     }
 
+    public void setBirthDate(int birthDay, int birthMonth, int birthYear) {
+        new Select(birthDayField).selectByValue(String.valueOf(birthDay));
+        new Select(birthMonthField).selectByValue(String.valueOf(birthMonth));
+        new Select(birthYearField).selectByValue(String.valueOf(birthYear));
+    }
+
+    public void deselectBirthDay() {
+        new Select(birthDayField).selectByValue("");
+    }
+
+    public void deselectBirthMonth() {
+        new Select(birthMonthField).selectByValue("");
+    }
+
+    public void deselectBirthYear() {
+        new Select(birthYearField).selectByValue("");
+    }
+
     public void setGender(Gender gender) {
         switch (gender) {
             case FEMALE:
@@ -104,27 +132,43 @@ public class ChangePersonalDataForm extends AbstractPage {
         residenceCityField.sendKeys(city);
     }
 
+    public void setResidenceCityEmpty() {
+        residenceCityField.clear();
+        residenceCityField.sendKeys("");
+    }
+
     public void setBirthCity(String city) {
         birthCityField.clear();
         birthCityField.sendKeys(city);
+    }
+
+    public void setBirthCityEmpty() {
+        birthCityField.clear();
+        birthCityField.sendKeys("");
     }
 
     public void clickSaveButton() {
         saveButton.click();
     }
 
+    public boolean isSaveButtonPresent() {
+        return isElementPresent(saveButton);
+    }
+
     public void clickCancelButton() {
         cancelButton.click();
     }
 
+    public boolean isCancelButtonPresent() {
+        return isElementPresent(cancelButton);
+    }
+
     public boolean isResidenceSuggestsPresent() {
-        new WebDriverWait(driver, timeOutInSeconds).until(webDriver -> residenceCitySuggests.isDisplayed());
-        return residenceCitySuggests.isDisplayed();
+        return isElementPresent(residenceCitySuggests);
     }
 
     public boolean isBirthCitySuggestsPresent() {
-        new WebDriverWait(driver, timeOutInSeconds).until(webDriver -> birthCitySuggests.isDisplayed());
-        return birthCitySuggests.isDisplayed();
+        return isElementPresent(birthCitySuggests);
     }
 
     public void selectResidenceSuggest(String city) {
@@ -135,5 +179,25 @@ public class ChangePersonalDataForm extends AbstractPage {
     public void selectBirthSuggest(String city) {
         String locator = String.format(cityBirthSuggest, city);
         driver.findElement(By.xpath(locator)).click();
+    }
+
+    public boolean isNameErrorLabelPresent() {
+        return isElementPresent(nameErrorLabel);
+    }
+
+    public boolean isSurnameErrorLabelPresent() {
+        return isElementPresent(surnameErrorLabel);
+    }
+
+    public boolean isBirthDateErrorLabelPresent() {
+        return isElementPresent(birthDateErrorLabel);
+    }
+
+    public boolean isResidenceCityErrorLabelPresent() {
+        return isElementPresent(residenceCityErrorLabel);
+    }
+
+    public boolean isBirthCityErrorLabelPresent() {
+        return isElementPresent(birthCityErrorLabel);
     }
 }

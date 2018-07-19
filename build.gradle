@@ -17,4 +17,3 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.12'
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.13.0'
 }
-//TODO создание файла с логином и паролем
