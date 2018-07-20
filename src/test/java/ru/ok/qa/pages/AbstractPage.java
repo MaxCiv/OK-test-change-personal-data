@@ -20,4 +20,9 @@ public abstract class AbstractPage {
         new WebDriverWait(driver, timeOutInSeconds).until(webDriver -> element.isDisplayed());
         return element.isDisplayed();
     }
+
+    protected boolean isElementNotPresent(WebElement element) {
+        new WebDriverWait(driver, timeOutInSeconds).until(webDriver -> (!element.isDisplayed()));
+        return !element.isDisplayed();
+    }
 }

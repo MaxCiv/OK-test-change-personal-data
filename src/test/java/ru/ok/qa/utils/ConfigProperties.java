@@ -16,7 +16,10 @@ public final class ConfigProperties {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_CHROMEDRIVER = "chromedriver";
     public static final String KEY_GECKODRIVER = "geckodriver";
+    public static final String KEY_IEDRIVER = "iedriver";
+    public static final String KEY_EDGEDRIVER = "edgedriver";
     public static final String KEY_IMPLICITLY_WAIT_TIME_SEC = "implicitlyWaitTimeSec";
+    public static final String KEY_USE_BROWSER = "useBrowser";
 
     private static Properties properties;
 

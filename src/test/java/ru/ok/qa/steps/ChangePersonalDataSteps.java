@@ -98,16 +98,8 @@ public class ChangePersonalDataSteps {
         changePersonalDataForm.setResidenceCity(cityFullName);
     }
 
-    public void setResidenceCityEmpty() {
-        changePersonalDataForm.setResidenceCityEmpty();
-    }
-
     public void setBirthCity(String cityFullName) {
         changePersonalDataForm.setBirthCity(cityFullName);
-    }
-
-    public void setBirthCityEmpty() {
-        changePersonalDataForm.setBirthCityEmpty();
     }
 
     public void selectResidenceSuggest(String cityShortName) {
@@ -118,6 +110,16 @@ public class ChangePersonalDataSteps {
     public void selectBirthSuggest(String cityShortName) {
         Assert.assertTrue("Birth city suggests did not appear.", changePersonalDataForm.isBirthCitySuggestsPresent());
         changePersonalDataForm.selectBirthSuggest(cityShortName);
+    }
+
+    public void closeResidenceSuggest() {
+        changePersonalDataForm.closeResidenceSuggest();
+        Assert.assertTrue("Residence suggests did not disappear.", changePersonalDataForm.isResidenceSuggestsNotPresent());
+    }
+
+    public void closeBirthSuggest() {
+        changePersonalDataForm.closeBirthSuggest();
+        Assert.assertTrue("Birth suggests did not disappear.", changePersonalDataForm.isBirthCitySuggestsNotPresent());
     }
 
     public void checkNameErrorLabelIsPresent() {
@@ -138,5 +140,21 @@ public class ChangePersonalDataSteps {
 
     public void checkBirthCityErrorLabelIsPresent() {
         Assert.assertTrue("Birth city error label did not appear.", changePersonalDataForm.isBirthCityErrorLabelPresent());
+    }
+
+    public String getNameText() {
+        return changePersonalDataForm.getNameText();
+    }
+
+    public String getSurnameText() {
+        return changePersonalDataForm.getSurnameText();
+    }
+
+    public String getResidenceCityText() {
+        return changePersonalDataForm.getResidenceCityText();
+    }
+
+    public String getBirthCityText() {
+        return changePersonalDataForm.getBirthCityText();
     }
 }

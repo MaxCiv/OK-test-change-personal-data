@@ -24,7 +24,8 @@ public abstract class ChangePersonalDataTest {
 
     @BeforeClass
     public static void setUpBeforeClass() {
-        driver = WebDriverFactory.newInstance(WebDriverFactory.FIREFOX);
+        driver = WebDriverFactory.newInstance(ConfigProperties.getProperty(ConfigProperties.KEY_USE_BROWSER));
+
         loginSteps = new LoginSteps(new LoginForm(driver));
         changePersonalDataSteps = new ChangePersonalDataSteps(new SettingsMainPage(driver),
                 new ChangePersonalDataForm(driver), new NotifySuccessfulChangePopup(driver));

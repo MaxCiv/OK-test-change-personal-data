@@ -16,7 +16,7 @@ public class IncorrectChangeNameSurnameTest extends ChangePersonalDataTest {
     @Parameterized.Parameters(name = "{index}:symbols({0})")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {""}, {"."}, {"<!--@/*$%^&#*/()?>"}, {"\""}, {"'"}, {"`"}, {"|"}, {"/"}, {"\\"}, {","}, {";"}, {":"},
+                {"."}, {"<!--@/*$%^&#*/()?>"}, {"\""}, {"'"}, {"`"}, {"|"}, {"/"}, {"\\"}, {","}, {";"}, {":"},
                 {"<"}, {">"}, {"^"}, {"*"}, {"?"}, {"«"}, {"»"}, {"["}, {"]"}, {"~"}, {"!"}, {"@"}, {"%"}, {"&"},
                 {"$"}, {"^"}, {"#"}, {"<script>alert(\"xss!\")</script>"}, {"DROP TABLE user;"},
                 {"<input onclick=\"javascript:alert('xss');\">"}, {"<input></input>"}
@@ -50,5 +50,21 @@ public class IncorrectChangeNameSurnameTest extends ChangePersonalDataTest {
         changePersonalDataSteps.setSurname(wrongSymbols);
         changePersonalDataSteps.clickSaveButton();
         changePersonalDataSteps.checkSurnameErrorLabelIsPresent();
+    }
+
+    @Test
+    public void incorrectResidenceCity() {
+        changePersonalDataSteps.setResidenceCity(wrongSymbols);
+        changePersonalDataSteps.closeResidenceSuggest();
+        changePersonalDataSteps.clickSaveButton();
+        changePersonalDataSteps.checkResidenceCityErrorLabelIsPresent();
+    }
+
+    @Test
+    public void incorrectBirthCity() {
+        changePersonalDataSteps.setBirthCity(wrongSymbols);
+        changePersonalDataSteps.closeBirthSuggest();
+        changePersonalDataSteps.clickSaveButton();
+        changePersonalDataSteps.checkBirthCityErrorLabelIsPresent();
     }
 }

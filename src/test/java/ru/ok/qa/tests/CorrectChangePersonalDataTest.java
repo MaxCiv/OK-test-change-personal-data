@@ -9,6 +9,10 @@ import ru.ok.qa.utils.UserCreator;
 
 public class CorrectChangePersonalDataTest extends ChangePersonalDataTest {
 
+    private static final int NAME_TEXT_MAX_LENGTH = 16;
+    private static final int SURNAME_TEXT_MAX_LENGTH = 24;
+    private static final int CITY_TEXT_MAX_LENGTH = 80;
+
     private final User prevUser = UserCreator.getDefaultPreviousUser();
 
     @Before
@@ -44,7 +48,7 @@ public class CorrectChangePersonalDataTest extends ChangePersonalDataTest {
         changePersonalDataSteps.setGender(newUser.getGender());
         changePersonalDataSteps.setResidenceCity(newUser.getResidenceCity().getFullName());
         changePersonalDataSteps.selectResidenceSuggest(newUser.getResidenceCity().getShortName());
-        changePersonalDataSteps.setBirthCityEmpty();
+        changePersonalDataSteps.setBirthCity("");
         changePersonalDataSteps.saveChangedPersonalData();
 
         Assert.assertEquals("Personal data on settings page does not match to user object.",
@@ -63,20 +67,24 @@ public class CorrectChangePersonalDataTest extends ChangePersonalDataTest {
     }
 
     @Test
-    public void nameAndSurnameWithCertainNumberOfCharacters() {
-        String tooLongWord = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";  // 30 chars
-        String longestName = "aaaaaaaaaaaaaaaa";  // 16 chars
-        String longestSurname = "aaaaaaaaaaaaaaaaaaaaaaaa";  // 24 chars
-        User newUser = UserCreator.getDefaultNewUser();
-        newUser.setName(tooLongWord);
-        newUser.setSurname(tooLongWord);
-        changePersonalDataSteps.openChangePersonalDataForm();
-        changePersonalDataSteps.fillChangePersonalDataForm(newUser);
-        changePersonalDataSteps.saveChangedPersonalData();
+    public void fieldsWithCertainNumberOfCharacters() {
+        String tooLongWord = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa";  // 28 chars
 
-        newUser.setName(longestName);
-        newUser.setSurname(longestSurname);
-        Assert.assertEquals("Personal data on settings page does not match to user object.",
-                changePersonalDataSteps.getPersonalDataText(), newUser.formPersonalDataDescription());
+        changePersonalDataSteps.openChangePersonalDataForm();
+        changePersonalDataSteps.setName(tooLongWord);
+        changePersonalDataSteps.setSurname(tooLongWord);
+        changePersonalDataSteps.setResidenceCity(tooLongWord + tooLongWord + tooLongWord);
+        changePersonalDataSteps.closeResidenceSuggest();
+        changePersonalDataSteps.setBirthCity(tooLongWord + tooLongWord + tooLongWord);
+        changePersonalDataSteps.closeBirthSuggest();
+
+        Assert.assertEquals("Name field has changed 'maxlength' attribute.",
+                NAME_TEXT_MAX_LENGTH, changePersonalDataSteps.getNameText().length());
+        Assert.assertEquals("Surname field has changed 'maxlength' attribute.",
+                SURNAME_TEXT_MAX_LENGTH, changePersonalDataSteps.getSurnameText().length());
+        Assert.assertEquals("ResidenceCity field has changed 'maxlength' attribute.",
+                CITY_TEXT_MAX_LENGTH, changePersonalDataSteps.getResidenceCityText().length());
+        Assert.assertEquals("BirthCity field has changed 'maxlength' attribute.",
+                CITY_TEXT_MAX_LENGTH, changePersonalDataSteps.getBirthCityText().length());
     }
 }

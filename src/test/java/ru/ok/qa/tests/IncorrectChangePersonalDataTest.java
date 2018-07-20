@@ -48,20 +48,22 @@ public class IncorrectChangePersonalDataTest extends ChangePersonalDataTest {
     }
 
     @Test
-    public void incorrectResidenceCity() {
-        changePersonalDataSteps.setResidenceCity("SomeIncorrectCityName, SomeIncorrectCountryName");
+    public void emptyRequiredFields() {
+        changePersonalDataSteps.setName("    ");
+        changePersonalDataSteps.setSurname("    ");
+        changePersonalDataSteps.setResidenceCity("    ");
+        changePersonalDataSteps.closeResidenceSuggest();
         changePersonalDataSteps.clickSaveButton();
+        changePersonalDataSteps.checkNameErrorLabelIsPresent();
+        changePersonalDataSteps.checkSurnameErrorLabelIsPresent();
         changePersonalDataSteps.checkResidenceCityErrorLabelIsPresent();
 
-        changePersonalDataSteps.setResidenceCityEmpty();
+        changePersonalDataSteps.setName("");
+        changePersonalDataSteps.setSurname("");
+        changePersonalDataSteps.setResidenceCity("");
         changePersonalDataSteps.clickSaveButton();
+        changePersonalDataSteps.checkNameErrorLabelIsPresent();
+        changePersonalDataSteps.checkSurnameErrorLabelIsPresent();
         changePersonalDataSteps.checkResidenceCityErrorLabelIsPresent();
-    }
-
-    @Test
-    public void incorrectBirthCity() {
-        changePersonalDataSteps.setBirthCity("SomeIncorrectCityName, SomeIncorrectCountryName");
-        changePersonalDataSteps.clickSaveButton();
-        changePersonalDataSteps.checkBirthCityErrorLabelIsPresent();
     }
 }

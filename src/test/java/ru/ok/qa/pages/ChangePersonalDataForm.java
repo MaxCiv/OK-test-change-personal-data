@@ -1,6 +1,7 @@
 package ru.ok.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -132,19 +133,9 @@ public class ChangePersonalDataForm extends AbstractPage {
         residenceCityField.sendKeys(city);
     }
 
-    public void setResidenceCityEmpty() {
-        residenceCityField.clear();
-        residenceCityField.sendKeys("");
-    }
-
     public void setBirthCity(String city) {
         birthCityField.clear();
         birthCityField.sendKeys(city);
-    }
-
-    public void setBirthCityEmpty() {
-        birthCityField.clear();
-        birthCityField.sendKeys("");
     }
 
     public void clickSaveButton() {
@@ -171,6 +162,14 @@ public class ChangePersonalDataForm extends AbstractPage {
         return isElementPresent(birthCitySuggests);
     }
 
+    public boolean isResidenceSuggestsNotPresent() {
+        return isElementNotPresent(residenceCitySuggests);
+    }
+
+    public boolean isBirthCitySuggestsNotPresent() {
+        return isElementNotPresent(birthCitySuggests);
+    }
+
     public void selectResidenceSuggest(String city) {
         String locator = String.format(cityResidenceSuggest, city);
         driver.findElement(By.xpath(locator)).click();
@@ -179,6 +178,16 @@ public class ChangePersonalDataForm extends AbstractPage {
     public void selectBirthSuggest(String city) {
         String locator = String.format(cityBirthSuggest, city);
         driver.findElement(By.xpath(locator)).click();
+    }
+
+    public void closeResidenceSuggest() {
+        residenceCityField.click();
+        residenceCityField.sendKeys(Keys.TAB);
+    }
+
+    public void closeBirthSuggest() {
+        birthCityField.click();
+        birthCityField.sendKeys(Keys.TAB);
     }
 
     public boolean isNameErrorLabelPresent() {
@@ -199,5 +208,21 @@ public class ChangePersonalDataForm extends AbstractPage {
 
     public boolean isBirthCityErrorLabelPresent() {
         return isElementPresent(birthCityErrorLabel);
+    }
+
+    public String getNameText() {
+        return nameField.getAttribute("value");
+    }
+
+    public String getSurnameText() {
+        return surnameField.getAttribute("value");
+    }
+
+    public String getResidenceCityText() {
+        return residenceCityField.getAttribute("value");
+    }
+
+    public String getBirthCityText() {
+        return birthCityField.getAttribute("value");
     }
 }
