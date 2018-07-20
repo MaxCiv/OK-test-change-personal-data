@@ -16,7 +16,7 @@ public class ParallelTests {
     @Test
     public void runAllTestInParallel() {
         Class[] classes = {CorrectChangePersonalDataTest.class, IncorrectChangePersonalDataTest.class,
-                IncorrectChangeNameSurnameTest.class};
+                IncorrectSymbolsInFieldsTest.class};
         Result result = JUnitCore.runClasses(ParallelComputer.classes(), classes);
         result.getFailures().forEach(failure -> LOG.error(failure.toString()));
         Assert.assertTrue(result.wasSuccessful());

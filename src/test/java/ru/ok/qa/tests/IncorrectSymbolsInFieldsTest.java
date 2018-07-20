@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class IncorrectChangeNameSurnameTest extends ChangePersonalDataTest {
+public class IncorrectSymbolsInFieldsTest extends ChangePersonalDataTest {
 
     @Parameterized.Parameters(name = "{index}:symbols({0})")
     public static Collection<Object[]> data() {
@@ -27,7 +27,7 @@ public class IncorrectChangeNameSurnameTest extends ChangePersonalDataTest {
 
     private String wrongSymbols;
 
-    public IncorrectChangeNameSurnameTest(String wrongSymbols) {
+    public IncorrectSymbolsInFieldsTest(String wrongSymbols) {
         this.wrongSymbols = wrongSymbols;
     }
 
