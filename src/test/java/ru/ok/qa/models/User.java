@@ -24,15 +24,15 @@ public class User {
         StringBuilder descriptionBuilder = new StringBuilder();
         descriptionBuilder.append(name).append(" ").append(surname);
         if (gender.equals(Gender.FEMALE)) {
-            descriptionBuilder.append(", родилась ");
+            descriptionBuilder.append(", СЂРѕРґРёР»Р°СЃСЊ ");
         } else
-            descriptionBuilder.append(", родился ");
+            descriptionBuilder.append(", СЂРѕРґРёР»СЃСЏ ");
         descriptionBuilder.append(birthDate.get(Calendar.DAY_OF_MONTH)).append(" ")
                 .append(birthDate.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("ru"))).append(" ")
                 .append(birthDate.get(Calendar.YEAR));
         if (!birthCity.getShortName().isEmpty())
-            descriptionBuilder.append(" в городе ").append(birthCity.getShortName());
-        descriptionBuilder.append(", сейчас живу в городе ").append(residenceCity.getShortName());
+            descriptionBuilder.append(" РІ РіРѕСЂРѕРґРµ ").append(birthCity.getShortName());
+        descriptionBuilder.append(", СЃРµР№С‡Р°СЃ Р¶РёРІСѓ РІ РіРѕСЂРѕРґРµ ").append(residenceCity.getShortName());
         return descriptionBuilder.toString();
     }
 

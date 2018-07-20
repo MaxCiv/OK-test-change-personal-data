@@ -39,6 +39,7 @@ public final class WebDriverFactory {
                 break;
         }
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(ConfigProperties.getProperty(ConfigProperties.KEY_IMPLICITLY_WAIT_TIME_SEC)), TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         return driver;
     }
 }

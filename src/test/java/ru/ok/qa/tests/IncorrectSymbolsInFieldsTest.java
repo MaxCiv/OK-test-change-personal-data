@@ -17,7 +17,7 @@ public class IncorrectSymbolsInFieldsTest extends ChangePersonalDataTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"."}, {"<!--@/*$%^&#*/()?>"}, {"\""}, {"'"}, {"`"}, {"|"}, {"/"}, {"\\"}, {","}, {";"}, {":"},
-                {"<"}, {">"}, {"^"}, {"*"}, {"?"}, {"«"}, {"»"}, {"["}, {"]"}, {"~"}, {"!"}, {"@"}, {"%"}, {"&"},
+                {"<"}, {">"}, {"^"}, {"*"}, {"?"}, {"Â«"}, {"Â»"}, {"["}, {"]"}, {"~"}, {"!"}, {"@"}, {"%"}, {"&"},
                 {"$"}, {"^"}, {"#"}, {"<script>alert(\"xss!\")</script>"}, {"DROP TABLE user;"},
                 {"<input onclick=\"javascript:alert('xss');\">"}, {"<input></input>"}
         });

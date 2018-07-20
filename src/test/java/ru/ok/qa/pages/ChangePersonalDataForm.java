@@ -63,13 +63,13 @@ public class ChangePersonalDataForm extends AbstractPage {
     @FindBy(css = ".form_i.form_i__error[data-l='t,birthday']>span.input-e")
     private WebElement birthDateErrorLabel;
 
-    @FindBy(xpath = "//span[text()='Пожалуйста, выберите место проживания из списка']") // oh my god, where is dot?
+    @FindBy(xpath = "//span[text()='РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РјРµСЃС‚Рѕ РїСЂРѕР¶РёРІР°РЅРёСЏ РёР· СЃРїРёСЃРєР°']") // oh my god, where is dot?
     private WebElement residenceCityErrorLabel;
 
-    @FindBy(xpath = "//span[text()='Пожалуйста, выберите родной город из списка.']")
+    @FindBy(xpath = "//span[text()='РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ СЂРѕРґРЅРѕР№ РіРѕСЂРѕРґ РёР· СЃРїРёСЃРєР°.']")
     private WebElement birthCityErrorLabel;
 
-    //TODO более оптимальный способ?
+    //TODO Р±РѕР»РµРµ РѕРїС‚РёРјР°Р»СЊРЅС‹Р№ СЃРїРѕСЃРѕР±?
     private String cityResidenceSuggests = "//*[@id='citySugg_SuggestItems']";
     private String cityBirthSuggests = "//*[@id='cityBSugg_SuggestItems']";
     private String cityResidenceSuggest = cityResidenceSuggests + "/li[.//*[text()='%s']]";

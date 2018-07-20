@@ -14,23 +14,23 @@ public final class UserCreator {
 
     public static User getDefaultPreviousUser() {
         User user = new User();
-        user.setName("Розалинда");
-        user.setSurname("Лютес");
+        user.setName("Р РѕР·Р°Р»РёРЅРґР°");
+        user.setSurname("Р›СЋС‚РµСЃ");
         user.setBirthDate(new GregorianCalendar(1975, Calendar.DECEMBER, 2));
         user.setGender(Gender.MALE);
-        user.setResidenceCity(new City("Вашингтон", "Вашингтон, США"));
-        user.setBirthCity(new City("Колумбия", "Колумбия, США"));
+        user.setResidenceCity(new City("Р’Р°С€РёРЅРіС‚РѕРЅ", "Р’Р°С€РёРЅРіС‚РѕРЅ, РЎРЁРђ"));
+        user.setBirthCity(new City("РљРѕР»СѓРјР±РёСЏ", "РљРѕР»СѓРјР±РёСЏ, РЎРЁРђ"));
         return user;
     }
 
     public static User getDefaultNewUser() {
         User user = new User();
-        user.setName("Розалинда");
-        user.setSurname("Лютес");
+        user.setName("Р РѕР·Р°Р»РёРЅРґР°");
+        user.setSurname("Р›СЋС‚РµСЃ");
         user.setBirthDate(new GregorianCalendar(1976, Calendar.FEBRUARY, 29));
         user.setGender(Gender.FEMALE);
-        user.setResidenceCity(new City("Колумбия", "Колумбия, США"));
-        user.setBirthCity(new City("Нью-Йорк", "Нью-Йорк, США"));
+        user.setResidenceCity(new City("РљРѕР»СѓРјР±РёСЏ", "РљРѕР»СѓРјР±РёСЏ, РЎРЁРђ"));
+        user.setBirthCity(new City("РќСЊСЋ-Р™РѕСЂРє", "РќСЊСЋ-Р™РѕСЂРє, РЎРЁРђ"));
         return user;
     }
 }
