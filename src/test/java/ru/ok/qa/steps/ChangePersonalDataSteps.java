@@ -42,7 +42,6 @@ public class ChangePersonalDataSteps {
     }
 
     public void saveChangedPersonalData() {
-        Assert.assertTrue("Save button is not available.", changePersonalDataForm.isSaveButtonPresent());
         changePersonalDataForm.clickSaveButton();
 
         Assert.assertTrue("Notify panel did not appear.", notifySuccessfulChangePopup.isPopupPresent());

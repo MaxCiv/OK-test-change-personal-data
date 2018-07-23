@@ -39,32 +39,18 @@ public class IncorrectSymbolsInFieldsTest extends ChangePersonalDataTest {
     }
 
     @Test
-    public void incorrectName() {
+    public void incorrectSymbolsInFields() {
         changePersonalDataSteps.setName(wrongSymbols);
-        changePersonalDataSteps.clickSaveButton();
-        changePersonalDataSteps.checkNameErrorLabelIsPresent();
-    }
-
-    @Test
-    public void incorrectSurname() {
         changePersonalDataSteps.setSurname(wrongSymbols);
-        changePersonalDataSteps.clickSaveButton();
-        changePersonalDataSteps.checkSurnameErrorLabelIsPresent();
-    }
-
-    @Test
-    public void incorrectResidenceCity() {
         changePersonalDataSteps.setResidenceCity(wrongSymbols);
         changePersonalDataSteps.closeResidenceSuggest();
-        changePersonalDataSteps.clickSaveButton();
-        changePersonalDataSteps.checkResidenceCityErrorLabelIsPresent();
-    }
-
-    @Test
-    public void incorrectBirthCity() {
         changePersonalDataSteps.setBirthCity(wrongSymbols);
         changePersonalDataSteps.closeBirthSuggest();
         changePersonalDataSteps.clickSaveButton();
+
+        changePersonalDataSteps.checkNameErrorLabelIsPresent();
+        changePersonalDataSteps.checkSurnameErrorLabelIsPresent();
+        changePersonalDataSteps.checkResidenceCityErrorLabelIsPresent();
         changePersonalDataSteps.checkBirthCityErrorLabelIsPresent();
     }
 }

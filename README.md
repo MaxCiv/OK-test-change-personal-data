@@ -22,7 +22,3 @@ The project consists of the following packages:
 * `steps` - business-logic of tests;
 * `tests` - test classes;
 * `utils` - utility classes.
-
-***
-
-Project encoding: _windows-1251_
